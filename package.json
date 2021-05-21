@@ -12,12 +12,8 @@
     "type": "git",
     "url": "git+https://github.com/dshaplyko/wdio7.git"
   },
-  "keywords": [],
   "author": "dmitryshaplyko@gmail.com",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dshaplyko/wdio7/issues"
-  },
   "homepage": "https://github.com/dshaplyko/wdio7#readme",
   "dependencies": {
     "@wdio/cli": "^7.6.0",

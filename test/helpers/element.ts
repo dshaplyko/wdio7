@@ -11,33 +11,33 @@ export class Element {
     return (await (await el).getText());
   }
 
-  // public static async getTextArray(locator: string): Promise<string[]> {
-  //   await Waiter.waitForExist(locator);
-  //   const elNumber: number = (await $$(locator)).length;
-  //   const textArr: string[] = [];
-  //   for (let i: number = 0; i < elNumber; i++) {
-  //     textArr.push(await (await $$(locator))[i].getText());
-  //   }
-  //   return textArr;
-  // }
+  public static async getTextArray(el: WebdriverIO.Element[]): Promise<string[]> {
+    await Waiter.waitForExist(el[0]);
+    const elNumber: number = (await el).length;
+    const textArr: string[] = [];
+    for (let i: number = 0; i < elNumber; i++) {
+      textArr.push(await (await el)[i].getText());
+    }
+    return textArr;
+  }
 
-  // public static async isSelected(locator: string): Promise<boolean> {
-  //   await Waiter.waitForExist(locator);
-  //   return (await (await $(locator)).isSelected());
-  // }
+  public static async isSelected(el: WebdriverIO.Element): Promise<boolean> {
+    await Waiter.waitForExist(el);
+    return (await (await el).isSelected());
+  }
 
-  // public static async isDisplayed(locator: string): Promise<boolean> {
-  //   await Waiter.waitForExist(locator);
-  //   return (await (await $(locator)).isDisplayed());
-  // }
+  public static async isDisplayed(el: WebdriverIO.Element): Promise<boolean> {
+    await Waiter.waitForExist(el);
+    return (await (await el).isDisplayed());
+  }
 
-  // public static async isExisted(locator: string): Promise<boolean> {
-  //   await Waiter.waitForExist(locator);
-  //   return (await (await $(locator)).isExisting());
-  // }
+  public static async isExisted(el: WebdriverIO.Element): Promise<boolean> {
+    await Waiter.waitForExist(el);
+    return (await (await el).isExisting());
+  }
 
-  // public static async setValue(locator: string, value: string) {
-  //   await Waiter.waitForExist(locator);
-  //   await (await (await $(locator)).setValue(value));
-  // }
+  public static async setValue(el: WebdriverIO.Element, value: string): Promise<void> {
+    await Waiter.waitForExist(el);
+    await (await (await el).setValue(value));
+  }
 }
