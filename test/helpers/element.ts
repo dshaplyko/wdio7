@@ -38,6 +38,6 @@ export class Element {
 
   public static async setValue(el: WebdriverIO.Element, value: string): Promise<void> {
     await Waiter.waitForExist(el);
-    await (await (await el).setValue(value));
+    return (await (await el).setValue(value));
   }
 }
