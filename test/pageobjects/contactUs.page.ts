@@ -11,17 +11,28 @@ class ContactUsPage extends Page {
 	 */
 	get inputFirstName() { return $("input[name='first_name']") }
 	get inputLastName() { return $("input[name='last_name']") }
-	get inputEmail() { return $('#password') }
-  get inputComments() { return $('#password') }
+	get inputEmail() { return $("input[name='email']") }
+  get inputComments() { return $("textarea[name='message']") }
+  get buttonReset() { return $("input[type='reset']") }
+  get buttonSubmit() { return $("input[type='submit']") }
 
 	/**
 	 * a method to encapsule automation code to interact with the page
-	 * e.g. to login using username and password
+	 * e.g. to submit the form
 	 */
   
-	async submitForm(submitForm: submitForm): Promise<void> {
-    await Element.setValue(await this.inputFirstName, submitForm.firstName);
-		await Element.setValue(await this.inputLastName, submitForm.lastName);
+	async submitForm(submitForm: submitForm, button: string): Promise<void> {
+    await Element.setValue(this.inputFirstName, submitForm.firstName);
+		await Element.setValue(this.inputLastName, submitForm.lastName);
+    await Element.setValue(this.inputEmail, submitForm.email);
+    await Element.setValue(this.inputComments, submitForm.comments);
+
+    if (button === 'reset') {
+      await Element.click(this.buttonReset);
+    } else {
+      await Element.click(this.buttonSubmit);
+    }
+    
 	}
 
 	/**
