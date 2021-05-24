@@ -16,6 +16,7 @@ class ContactUsPage extends Page {
   get buttonReset() { return $("input[type='reset']") }
 	get buttonSubmit() { return $("input[type='submit']") }
 	get messageSuccess() { return $("#contact_reply") }
+	get errorMessage() { return $("body") }
 
 	/**
 	 * a method to encapsule automation code to interact with the page
@@ -30,9 +31,11 @@ class ContactUsPage extends Page {
 
     if (button === 'reset') {
       await Element.click(this.buttonReset);
-    } else {
+    } else if (button === 'submit') {
       await Element.click(this.buttonSubmit);
-    }
+    } else {
+			return;
+		}
     
 	}
 
@@ -51,6 +54,10 @@ class ContactUsPage extends Page {
 			await this.inputLastName,
 			await this.inputComments
 		]);
+	}
+
+	async getErrorText(): Promise<string> {
+		return Element.getText(this.errorMessage);
 	}
 
 	/**
