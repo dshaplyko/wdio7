@@ -21,6 +21,16 @@ export class Element {
     return textArr;
   }
 
+  public static async getValueArray(el: WebdriverIO.Element[]): Promise<string[]> {
+    await Waiter.waitForExist(el[0]);
+    const elNumber: number = (await el).length;
+    const textArr: string[] = [];
+    for (let i: number = 0; i < elNumber; i++) {
+      textArr.push(await (await el)[i].getValue());
+    }
+    return textArr;
+  }
+
   public static async isSelected(el: WebdriverIO.Element): Promise<boolean> {
     await Waiter.waitForExist(el);
     return (await (await el).isSelected());
@@ -28,7 +38,7 @@ export class Element {
 
   public static async isDisplayed(el: WebdriverIO.Element): Promise<boolean> {
     await Waiter.waitForExist(el);
-    return (await (await el).isDisplayed());
+    return (await el).isDisplayed();
   }
 
   public static async isExisted(el: WebdriverIO.Element): Promise<boolean> {

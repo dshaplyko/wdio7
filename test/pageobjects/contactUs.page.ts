@@ -14,7 +14,8 @@ class ContactUsPage extends Page {
 	get inputEmail() { return $("input[name='email']") }
   get inputComments() { return $("textarea[name='message']") }
   get buttonReset() { return $("input[type='reset']") }
-  get buttonSubmit() { return $("input[type='submit']") }
+	get buttonSubmit() { return $("input[type='submit']") }
+	get messageSuccess() { return $("#contact_reply") }
 
 	/**
 	 * a method to encapsule automation code to interact with the page
@@ -22,10 +23,10 @@ class ContactUsPage extends Page {
 	 */
   
 	async submitForm(submitForm: submitForm, button: string): Promise<void> {
-    await Element.setValue(this.inputFirstName, submitForm.firstName);
+		await Element.setValue(this.inputFirstName, submitForm.firstName);
 		await Element.setValue(this.inputLastName, submitForm.lastName);
     await Element.setValue(this.inputEmail, submitForm.email);
-    await Element.setValue(this.inputComments, submitForm.comments);
+		await Element.setValue(this.inputComments, submitForm.comments);
 
     if (button === 'reset') {
       await Element.click(this.buttonReset);
@@ -33,6 +34,23 @@ class ContactUsPage extends Page {
       await Element.click(this.buttonSubmit);
     }
     
+	}
+
+	async isMessageSuccessVisible(): Promise<boolean> {
+		return (await this.messageSuccess).isDisplayed();
+	}
+
+	async messageSuccessText(): Promise<string> {
+		return Element.getText(this.messageSuccess);
+	}
+
+	async checkFormData(): Promise<String[]> {
+		return Element.getValueArray([
+			await this.inputEmail,
+			await this.inputFirstName,
+			await this.inputLastName,
+			await this.inputComments
+		]);
 	}
 
 	/**
