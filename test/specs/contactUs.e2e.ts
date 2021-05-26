@@ -1,4 +1,5 @@
 import ContactUsPage from '../pageobjects/pages/contactUs.page';
+import SuccessPage from '../pageobjects/pages/success.page';
 import { expect } from 'chai';
 const data = {
   firstName: 'John',
@@ -14,14 +15,14 @@ describe('Contact Us Page - positive scenarios', () => {
   it('should submit the Contact Us form', async () => {
     await ContactUsPage.submitForm(data, 'submit');
     expect(await browser.getUrl()).to.include('contact-form-thank-you');
-    expect(await ContactUsPage.isMessageSuccessVisible()).to.equal(true);
-    expect(await ContactUsPage.messageSuccessText()).to.equal('Thank You for your Message!');
+    expect(await SuccessPage.isPageOpened()).to.equal(true);
+    expect(await SuccessPage.isMessageSuccessVisible()).to.equal(true);
+    expect(await SuccessPage.messageSuccessText()).to.equal('Thank You for your Message!');
   });
 
   it('should reset the Contact Us form', async () => {
     await ContactUsPage.submitForm(data, 'reset');
-    expect(await browser.getUrl()).to.include('contactus');
-    expect(await ContactUsPage.isMessageSuccessVisible()).to.equal(false);
+    expect(await SuccessPage.isPageOpened()).to.equal(false);
     /**
      * verify whether all inputs are empty
      */
