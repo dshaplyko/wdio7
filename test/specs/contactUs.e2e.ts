@@ -1,4 +1,4 @@
-import ContactUsPage from '../pageobjects/contactUs.page';
+import ContactUsPage from '../pageobjects/pages/contactUs.page';
 import { expect } from 'chai';
 const data = {
   firstName: 'John',

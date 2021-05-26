@@ -1,6 +1,6 @@
 import Page from './page';
-import { Element } from '../helpers/element'
-import submitForm from '../interfaces/interfaces'
+import { Element } from '../../helpers/element'
+import submitForm from '../../interfaces/interfaces'
 
 /**
  * sub page containing specific selectors and methods for a specific page
@@ -65,6 +65,10 @@ class ContactUsPage extends Page {
 	 */
 	open() {
 		return super.open('Contact-Us/contactus.html');
+	}
+
+	async isPageOpened(): Promise<boolean> {
+		return super.isPageOpened('contactus');
 	}
 }
 
