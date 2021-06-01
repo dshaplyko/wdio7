@@ -10,8 +10,20 @@ describe("Home Page", () => {
     expect(await ContactUsPage.isPageOpened()).to.equal(true);
   });
 
-  it.only("should contain thumbnails", async () => {
+  it("should contain thumbnails", async () => {
+    const count = await HomePage.thumbnails.getThumbnailsCount();
+    expect(count).to.be.above(0);
+  });
+
+  it("each of the thumbnails should contain title", async () => {
     const titles = await HomePage.thumbnails.getThumbnailsTitles();
     titles.forEach((title) => expect(title).not.to.equal(""));
+  });
+
+  it("should open a modal after clicking Find out button", async () => {
+    await HomePage.thumbnails.clickFindOut();
+    expect(await HomePage.modal.getTitleModal()).to.equal(
+      "Welcome to webdriveruniversity.com"
+    );
   });
 });
