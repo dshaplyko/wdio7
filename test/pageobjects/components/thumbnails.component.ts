@@ -22,9 +22,7 @@ export default class Thumbnails {
   }
 
   async getThumbnailsTitles(): Promise<string[]> {
-    return Element.getTextArray(
-      await $$(`${this.el} .section-title .sub-heading`)
-    );
+    return Element.getTextArray(await $$(`${this.el} .section-title .sub-heading`));
   }
 
   async clickThumbnail(index: number): Promise<void> {

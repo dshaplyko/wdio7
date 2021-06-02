@@ -1,8 +1,7 @@
-import { Element } from '../../helpers/element';
+import { Element } from "../../helpers/element";
 
 export default class NavigationBar {
-
-  readonly el: WebdriverIO.Element = $('#div-main-nav');
+  readonly el: WebdriverIO.Element = $("#div-main-nav");
 
   constructor(el?: WebdriverIO.Element) {
     if (el !== undefined) {
@@ -22,10 +21,10 @@ export default class NavigationBar {
     return (await this.el).$("a[href*='contactus']");
   }
 
-	/**
-	 * a method to encapsule automation code to interact with the page
-	 * e.g. to submit the form
-	 */
+  /**
+   * a method to encapsule automation code to interact with the page
+   * e.g. to submit the form
+   */
   async clickHome(): Promise<void> {
     await Element.click(await this.getButtonHome());
   }
@@ -34,9 +33,7 @@ export default class NavigationBar {
     await Element.click(await this.getButtonContactUs());
   }
 
-
-	/**
-	 * overwrite specifc options to adapt it to page object
-	 */
-	
+  /**
+   * overwrite specifc options to adapt it to page object
+   */
 }

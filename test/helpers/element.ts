@@ -1,14 +1,13 @@
 import { Waiter } from "./waiter";
 
 export class Element {
-
   public static async click(el: WebdriverIO.Element) {
     await Waiter.waitForClickable(el);
     await (await el).click();
   }
   public static async getText(el): Promise<string> {
     await Waiter.waitForExist(el);
-    return (await (await el).getText());
+    return await (await el).getText();
   }
 
   public static async getTextArray(el: WebdriverIO.Element[]): Promise<string[]> {
@@ -33,7 +32,7 @@ export class Element {
 
   public static async isSelected(el: WebdriverIO.Element): Promise<boolean> {
     await Waiter.waitForExist(el);
-    return (await (await el).isSelected());
+    return await (await el).isSelected();
   }
 
   public static async isDisplayed(el: WebdriverIO.Element): Promise<boolean> {
@@ -43,11 +42,11 @@ export class Element {
 
   public static async isExisted(el: WebdriverIO.Element): Promise<boolean> {
     await Waiter.waitForExist(el);
-    return (await (await el).isExisting());
+    return await (await el).isExisting();
   }
 
   public static async setValue(el: WebdriverIO.Element, value: string): Promise<void> {
     await Waiter.waitForExist(el);
-    return (await (await el).setValue(value));
+    return await (await el).setValue(value);
   }
 }

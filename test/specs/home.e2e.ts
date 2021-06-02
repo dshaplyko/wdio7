@@ -23,16 +23,12 @@ describe("Home Page", () => {
   it("should open a modal after clicking Find out button", async () => {
     await HomePage.thumbnails.clickFindOut();
     expect(await HomePage.modal.isModalDisplayed()).to.equal(true);
-    expect(await HomePage.modal.getTitleModal()).to.equal(
-      "Welcome to webdriveruniversity.com"
-    );
+    expect(await HomePage.modal.getTitleModal()).to.equal("Welcome to webdriveruniversity.com");
   });
 
   it("modal should contain the text", async () => {
     await HomePage.thumbnails.clickFindOut();
-    expect(await HomePage.modal.getBodyModal()).to.include(
-      "Welcome to webdriveruniversity.com"
-    );
+    expect(await HomePage.modal.getBodyModal()).to.include("Welcome to webdriveruniversity.com");
   });
 
   it("should close the modal by clicking Close button", async () => {
