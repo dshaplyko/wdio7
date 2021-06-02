@@ -1,11 +1,10 @@
 import Page from "./page";
-import NavigationBar from "../components/navBar.component";
 import Thumbnails from "../components/thumbnails.component";
 
 /**
  * sub page containing specific selectors and methods for a specific page
  */
-class HomePage extends Page {
+class OurProductsPage extends Page {
   /**
    * define selectors using getter methods
    */
@@ -14,6 +13,7 @@ class HomePage extends Page {
    * a method to encapsule automation code to interact with the page
    * e.g. to submit the form
    */
+
   get thumbnails() {
     return new Thumbnails();
   }
@@ -22,12 +22,12 @@ class HomePage extends Page {
    * overwrite specifc options to adapt idiv-main-navdiv-main-navt to page object
    */
   open() {
-    return super.open("Page-Object-Model/index.html");
+    return super.open("Page-Object-Model/products.html");
   }
 
   async isPageOpened(): Promise<boolean> {
-    return super.isPageOpened("index");
+    return super.isPageOpened("products");
   }
 }
 
-export default new HomePage();
+export default new OurProductsPage();

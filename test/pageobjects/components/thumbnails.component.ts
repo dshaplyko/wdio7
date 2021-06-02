@@ -9,14 +9,6 @@ export default class Thumbnails {
     }
   }
 
-  // async getSectionTitle(): Promise<WebdriverIO.Element> {
-  //   return (await this.el).$(".section-title p");
-  // }
-
-  // async getCaption(): Promise<WebdriverIO.Element> {
-  //   return (await this.el).$(".caption p");
-  // }
-
   async getButtonFindOut(index: number): Promise<WebdriverIO.Element> {
     return (await $$(this.el))[index - 1].$("#button-find-out-more");
   }
@@ -33,5 +25,10 @@ export default class Thumbnails {
     return Element.getTextArray(
       await $$(`${this.el} .section-title .sub-heading`)
     );
+  }
+
+  async clickThumbnail(index: number): Promise<void> {
+    const item = (await $$(this.el))[index - 1];
+    await Element.click(item);
   }
 }

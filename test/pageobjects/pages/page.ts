@@ -1,4 +1,5 @@
 import Modal from "../components/modal.component";
+import NavigationBar from "../components/navBar.component";
 /**
  * main page object containing all methods, selectors and functionality
  * that is shared across all page objects
@@ -15,6 +16,10 @@ export default class Page {
 
   get modal() {
     return new Modal();
+  }
+
+  get navigationBar() {
+    return new NavigationBar();
   }
 
   async isPageOpened(url: string): Promise<boolean> {
