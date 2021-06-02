@@ -22,13 +22,13 @@ export default class Modal {
   }
 
   async getTitleModal(): Promise<string> {
-    const title = await await this.title;
+    const title = await this.title;
     await Waiter.waitForDisplayed(title);
     return Element.getText(title);
   }
 
   async getBodyModal(): Promise<string> {
-    const body = await await this.body;
+    const body = await this.body;
     await Waiter.waitForDisplayed(body);
     return Element.getText(body);
   }
@@ -39,7 +39,7 @@ export default class Modal {
   }
 
   async clickButtonClose(): Promise<void> {
-    const button = await await this.buttonClose;
+    const button = await this.buttonClose;
     await Waiter.waitForDisplayed(button);
     return Element.click(button);
   }
